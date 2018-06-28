@@ -6,7 +6,8 @@ import json
 import re
 
 def loadIns(link):
-    '''Получает и возвращает html-код страницы, переданной по ссылке
+    '''
+    Получает и возвращает html-код страницы, переданной по ссылке
 
     '''
     headers = {'User-Agent': 'Mozilla/5.0\
@@ -20,8 +21,9 @@ def loadIns(link):
     return body
 
 def parseJson(jsonFile='C://Server/www/tokenowner.json'):
-    '''Получает access token страницы из json-файла jsonFile
-
+    '''
+    Получает access token страницы из json-файла jsonFile
+    
     '''
     try:
         jsObj = open(jsonFile, 'r')
@@ -35,8 +37,9 @@ def parseJson(jsonFile='C://Server/www/tokenowner.json'):
     return pObj['access_token']
 
 def listOfContent(body):
-    '''Ищет в html-коде страницы строки вида: "display_url"/"video_url"):"https:
-       Формирует список ссылок на фото или видео контент страницы
+    '''
+    Ищет в html-коде страницы строки вида: "display_url"/"video_url"):"https:
+    Формирует список ссылок на фото или видео контент страницы
        
     '''
     content = []
@@ -49,8 +52,9 @@ def listOfContent(body):
     return content
 
 def getAttach(typeContent, url, attachments, session, upload, profile):
-    '''Создаёт список прикреплённых материалов для отправки пользователю
-       Прикрепляется фото или видео файл, полученный по ссылке
+    '''
+    Создаёт список прикреплённых материалов для отправки пользователю
+    Прикрепляется фото или видео файл, полученный по ссылке
        
     '''
     text = "Из профиля пользователя: " + profile[profile.index('=')+1:]
@@ -67,7 +71,8 @@ def getAttach(typeContent, url, attachments, session, upload, profile):
     return text        
         
 def main():
-    '''Функция реализующая авторизацию страницы и работу бота
+    '''
+    Функция реализующая авторизацию страницы и работу бота
 
     '''
     session = requests.Session()
